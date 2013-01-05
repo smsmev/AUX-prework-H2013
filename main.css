@@ -1,0 +1,43 @@
+.center {
+    width: 26em;
+    margin-top: 4em;
+    margin-right: auto;
+    margin-bottom:0;
+    margin-left: auto;
+}
+
+
+#addressBG  {
+    background: #eee;
+    width: 26em;
+    height: 8em;
+    border: .3em solid #eee;
+    border-radius: 1em;
+    display: inline-block;
+    margin-left:auto;
+    margin-right:auto;
+             
+}
+
+#add_book {
+    color: #444;
+    font-size: 2em;
+    font-family: Helvetica, Sans-Serif;
+    font-weight: bold;
+    text-align: center;
+    margin-top: .8em;
+    
+}
+
+#searchBox {
+    border: 2px soild #333;
+    color: #eee;
+    height: 2em;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+type:text   {
+     color:red;
+    font-size: 3em;
+}
