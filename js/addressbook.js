@@ -56,8 +56,7 @@ function ajaxCall(dataUrl, outputElement, callback) {
     //starting ajax call    
     ajaxCall('data/contacts.json', output, function (data) {
         
-	var searchValue = searchField.value,
-        addrBook = data.addressBook,
+	var addrBook = data.addressBook,
         count = addrBook.length
         i;
 
@@ -106,7 +105,30 @@ function ajaxCall(dataUrl, outputElement, callback) {
             }
         });
     },          
-
+        
+//---------        
+        setActiveSection : function(){
+            
+            this.parentNode.setAttribute("class", "active");
+        },
+    
+        removeActiveSection : function(){
+            
+            this.parentNode.removeAttribute("class");
+        },
+          
+        addHoverClass : function(){
+            
+            searchForm.setAttribute("class", "hovering");
+        },
+        
+        removeHoverClass : function(){
+            
+            searchForm.removeAttribute("class");
+        },
+        
+//--------
+}        
     searchField.addEventListener("keyup", addr.search, false);
 
 })();
