@@ -6,6 +6,10 @@
     margin-left: auto;
 }
 
+#search-form
+{
+    margin-left: 8em;
+}
 
 #addressBG  {
     background: #eee;
