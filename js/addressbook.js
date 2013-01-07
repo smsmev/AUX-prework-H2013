@@ -1,3 +1,31 @@
+// jQuery Plug-In
+(function ($) {
+    
+    $.fn.addressBook = function(options) {
+        
+        var defaults = {
+            url: 'data/contacts.json',
+            
+        };        
+        
+        var options = $.extend(defaults, options);
+        
+        return this.each(function() {
+            
+                        
+        });
+    });  //end loop
+}; 
+        
+        
+})(jQuery);
+        
+$(document).ready( function () {
+                
+}); //close document.ready
+        
+/*-----------------   
+
 //ajax call with jQuery
 $(document).ready(function () {
     
@@ -32,3 +60,5 @@ $.getJSON('data/contacts.json',function (data) {
     }); //end ajax
     
 }); //close document.ready
+
+-----------------*/
