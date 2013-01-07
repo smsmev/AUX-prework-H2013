@@ -1,5 +1,5 @@
 {       
-"addressBook": [
+"addressBook" : [
         {
             "name": "Kristy Stetson",
             "email": "kristy@freshtilledsoil.com"
@@ -109,4 +109,4 @@
             "email": "kitt@freshtilledsoil.com"
         }
         ]
-    };
+    }

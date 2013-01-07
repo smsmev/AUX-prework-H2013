@@ -1,134 +1,34 @@
-function getHTTPObject() {
-
-    var xhr;
+//ajax call with jQuery
+$(document).ready(function () {
     
-    if (window.xmlHttpRequest) {
+    
+$.getJSON('data/contacts.json',function (data) {
+    
+    var addrBook = data.addressBook,
+        count = addrBook.lenth
         
-        xhr = new XMLHttpRequest();
-        
-    } else if (window.ActiveXObject) {
-        
-        xhr = newActiveXObject("Msx,12.XMLHTTP");
-        
-    }
-
-        return xhr;
-}
-    
-function ajaxCall(dataUrl, outputElement, callback) {
-    
-    var request = getHTTPObject();
-    
-    outputElement.innerHTML = "Loading...";
-    
-    request.onreadystatechange = function() {
-        
-        if (request.readyState === 4 && request.status === 200 ) {
-            
-            var contacts = JSON.parse(request.reponseText);
-            
-            if(typeof callback === "function"){
-                
-                callback(contacts);
-                
-            }
-        }
-    }
-    
-    request.open("GET", dataUrl, true);
-    request.send(null);
-}
-    
-
-(function(){
-    
-    var searchForm = document.getElementById("search-form"),
-        searchField = document.getElementById("q"),
-        count = contacts.addressBook.length,
-        target = document.getElementById("output")
-
-    var addr ={
-	
-        search : function (event) {	
-
-        var output = document.getElementById("output")
-    
-    //starting ajax call    
-    ajaxCall('data/contacts.json', output, function (data) {
-        
-	var addrBook = data.addressBook,
-        count = addrBook.length
-        i;
-
-	event.preventDefault();
-
-	target.innerHTML = "";
-
-	if(count > 0 && searchValue !== "") {
-        
-        for (i = 0; i < count; i = i + 1) {
-            
-            
-            var obj = addrBook[i],
-                isItFound = obj.name.indexOf(searchValue);
-            
-            if (isItFound !== -1) {
-
-				target.innerHTML += '<p><a href="mailto:' + obj.email + ' ">' + obj.email +'</a><p>';
-                }
-            }
-        }
-    });
-},
-
-        getAllContacts : function()  {
-            
-            var output = document.getElementById(output);
-            
-            ajaxCall('data/contacts.json', output, function (data){
-                            
-            var addrBook = data.addressBook,                
-                count = addrBook.length,
-                i;
-
-            target.innerHTML = "";
-
-            if (count > 0) {
-
-                for (i = 0; i < count; i = i + 1) {
-            
-                    var obj = addrBook[i];
-
-                    target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a><p>';
-
-                }
-            }
-        });
-    },          
-        
-//---------        
-        setActiveSection : function(){
-            
-            this.parentNode.setAttribute("class", "active");
-        },
-    
-        removeActiveSection : function(){
-            
-            this.parentNode.removeAttribute("class");
-        },
+        $('#output').empty();
           
-        addHoverClass : function(){
-            
-            searchForm.setAttribute("class", "hovering");
-        },
+          if (count > 0) {
+                    
+        $.each(addrBook, function (i, obj) {
         
-        removeHoverClass : function(){
+            $('#output').append('<p>' + obj.name + ', <a href="mailto:' + obj.email + ' ">' + obj.email +'</a><p>') .hide().fadeIn();  
             
-            searchForm.removeAttribute("class");
-        },
-        
-//--------
-}        
-    searchField.addEventListener("keyup", addr.search, false);
+            });
+        }
+    }).error(function (){
+    
+        alert('there was and ajax error');
+    
+    }).complete(function () {
+            
+        alert('your ajax call is complete');
+    
+    }).success(function() {
+    
+        alert('your ajax call was a success')
 
-})();
+    }); //end ajax
+    
+}); //close document.ready
