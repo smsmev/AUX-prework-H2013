@@ -1,34 +1,32 @@
 //ajax call with jQuery
 $(document).ready(function () {
     
-//start ajax call
-$.getJSON('data/contacts.json', function (data) {
-    
-    var addrBook = data.addressBook,
-        count = addrBook.length
+    //start ajax call
+    $.getJSON('data/contacts.json', function (data) {
         
-        $('#output').empty();
-          
-          if (count > 0) {
-                    
-        $.each(addrBook, function (i, obj) {
-        
-            $('#output').append('<p>' + obj.name + ', <a href="mailto:' + obj.email + ' ">' + obj.email +'</a><p>');  
+        var addrBook = data.addressBook,
+            count = addrBook.length,
+            queryField = $("#q");
             
+        queryField.keyup( function(event) {
+            
+            var queryResult = queryField.val();
+            
+            event.preventDefault();
+            
+            $('#output').empty();
+                        
+            $.each(addrBook, function (i, obj) {
+                
+                var isItFound = obj.name.indexOf(queryResult);
+                
+                if(isItFound !== -1) {
+                    $('#output').append('<p>' + obj.name + ', <a href="mailto:' + obj.email + ' ">' + obj.email +'</a><p>');
+                }
+                
             });
-        }
-    }).error(function (){
+        });
     
-        alert('there was and ajax error');
-    
-    }).complete(function () {
-            
-        alert('your ajax call is complete');
-    
-    }).success(function() {
-    
-        alert('your ajax call was a success')
-
-    }); //end ajax
+        }); //end ajax
     
 }); //close document.ready
