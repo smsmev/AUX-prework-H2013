@@ -1,25 +1,32 @@
 //ajax call with jQuery
 $(document).ready(function () {
     
-//start ajax call
-$.getJSON('data/contacts.json', function (data) {
-    
-    var addrBook = data.addressBook,
-        count = addrBook.length,
-        queryResult = $("#q").val();
+    //start ajax call
+    $.getJSON('data/contacts.json', function (data) {
         
-        $('#output').empty();
-                    
-        $.each(addrBook, function (i, obj) {
+        var addrBook = data.addressBook,
+            count = addrBook.length,
+            var queryField = $("#q");
             
-            var isItFound = obj.name.indexOf(queryResult);
+        queryField.keyup( function(event) {
             
-            if(isItFound !== -1) {
-                $('#output').append('<p>' + obj.name + ', <a href="mailto:' + obj.email + ' ">' + obj.email +'</a><p>');
-            }
+            var queryResult = queryField.val();
             
+            event.preventDefault();
+            
+            $('#output').empty();
+                        
+            $.each(addrBook, function (i, obj) {
+                
+                var isItFound = obj.name.indexOf(queryResult);
+                
+                if(isItFound !== -1) {
+                    $('#output').append('<p>' + obj.name + ', <a href="mailto:' + obj.email + ' ">' + obj.email +'</a><p>');
+                }
+                
+            });
         });
-
-    }); //end ajax
+    
+        }); //end ajax
     
 }); //close document.ready
