@@ -14,7 +14,7 @@ function getHTTPObject() {
 
         return xhr;
 }
-    
+//define ajax call
 function ajaxCall(dataUrl, outputElement, callback) {
     
     var request = getHTTPObject();
@@ -42,22 +42,21 @@ function ajaxCall(dataUrl, outputElement, callback) {
 
 (function(){
     
-    var searchForm = document.getElementById("search-form"),
+    var searchForm = document.getElementById("searchForm"),
         searchField = document.getElementById("q"),
-        count = contacts.addressBook.length,
         target = document.getElementById("output")
 
-    var addr ={
+    var addr = {
 	
         search : function (event) {	
 
         var output = document.getElementById("output")
     
-    //starting ajax call    
+//starting ajax call    
     ajaxCall('data/contacts.json', output, function (data) {
         
 	var addrBook = data.addressBook,
-        count = addrBook.length
+        count = addrBook.length,
         i;
 
 	event.preventDefault();
@@ -70,7 +69,7 @@ function ajaxCall(dataUrl, outputElement, callback) {
             
             
             var obj = addrBook[i],
-                isItFound = obj.name.indexOf(searchValue);
+                isItFound = obj.name.toLowerCase.indexOf(searchValue);
             
             if (isItFound !== -1) {
 
@@ -80,14 +79,15 @@ function ajaxCall(dataUrl, outputElement, callback) {
         }
     });
 },
-
+/*
         getAllContacts : function()  {
             
             var output = document.getElementById(output);
             
             ajaxCall('data/contacts.json', output, function (data){
                             
-            var addrBook = data.addressBook,                
+            var searchValue = searchField.value,
+                addrBook = data.addressBook,                
                 count = addrBook.length,
                 i;
 
@@ -105,7 +105,7 @@ function ajaxCall(dataUrl, outputElement, callback) {
             }
         });
     },          
-        
+     
 //---------        
         setActiveSection : function(){
             
@@ -128,6 +128,7 @@ function ajaxCall(dataUrl, outputElement, callback) {
         },
         
 //--------
+*/ 
 }        
     searchField.addEventListener("keyup", addr.search, false);
 
