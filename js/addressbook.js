@@ -6,7 +6,7 @@ $(document).ready(function () {
         
         var addrBook = data.addressBook,
             count = addrBook.length,
-            var queryField = $("#q");
+            queryField = $("#q");
             
         queryField.keyup( function(event) {
             
