@@ -13,19 +13,17 @@
     <div id="addressBG">
         
         <div id="add_book">Address Book</div>
-    
-            <form action="" method="get" id="search-form">
+
+            <form id="search-form" >
             
+               
                 <div class="section">
-                    <input type="search" id="q" name="q" placeholder="Who are you looking for?">
-                    <p id="output" aria-atomic="true" aria-live="polite" aria-relevant="additionsremovals"></p>
+            <label for="q"></label>
+                    <input type="text" id="q" placeholder="Who are you looking for?" autocomplete="off">
+                    <p id="output" aria-atomic="true" aria-live="polite" aria-relevant="additions removals"></p>
                 </div>
-            
-              </form>
-        
-          </div>
-    
+            </form>
+        </div>
         <script src="addressbook.js"></script>
     </body>
-
 </html>

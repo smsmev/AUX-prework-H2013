@@ -1,9 +1,9 @@
 (function () {
-
-var contacts = {
+    
+    var contacts = {
     
         "addressBook": [
-        {
+            {
             "name": "Kristy Stetson",
             "email": "kristy@freshtilledsoil.com"
         },
@@ -134,7 +134,8 @@ var 	addr ={
 	for (i = 0; i < count; i = i + 1) {
 
 		var obj = contacts.addressBook[i],
-            isItFound = obj.name.indexOf(searchValue);
+            
+            isItFound = obj.name.toLowerCase().indexOf(searchValue);
 
 		if (isItFound !== -1) {
 
@@ -143,7 +144,7 @@ var 	addr ={
         }
     }
 },
-
+/*
         getAllContacts: function() {
 
             var i;
@@ -182,7 +183,7 @@ var 	addr ={
             
             searchForm.removeAttribute("class");
         },    
-    
+ */   
     //--------------
     };
 
