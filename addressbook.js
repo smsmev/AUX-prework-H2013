@@ -1,9 +1,9 @@
 (function () {
-
-var contacts = {
+    
+    var contacts = {
     
         "addressBook": [
-        {
+            {
             "name": "Kristy Stetson",
             "email": "kristy@freshtilledsoil.com"
         },
@@ -134,7 +134,8 @@ var 	addr ={
 	for (i = 0; i < count; i = i + 1) {
 
 		var obj = contacts.addressBook[i],
-            isItFound = obj.name.indexOf(searchValue);
+            
+            isItFound = obj.name.toLowerCase().indexOf(searchValue);
 
 		if (isItFound !== -1) {
 
@@ -143,7 +144,7 @@ var 	addr ={
         }
     }
 },
-
+/*
         getAllContacts: function() {
 
             var i;
@@ -157,10 +158,33 @@ var 	addr ={
                     var obj = contacts.addressBook[i];
 
                     target.innerHTML += '<p><a href="mailto:' + obj.email + '">' + obj.name + '</a><p>';
-
+                    
                 }
             }
-        }
+        },
+    
+    //--------------
+        setActiveSection : function(){
+            
+            this.parentNode.setAttribute("class", "active");
+        },
+    
+        removeActiveSection : function(){
+            
+            this.parentNode.removeAttribute("class");
+        },
+          
+        addHoverClass : function(){
+            
+            searchForm.setAttribute("class", "hovering");
+        },
+        
+        removeHoverClass : function(){
+            
+            searchForm.removeAttribute("class");
+        },    
+ */   
+    //--------------
     };
 
     searchField.addEventListener("keyup", addr.search, false);
