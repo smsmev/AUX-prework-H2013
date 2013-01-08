@@ -1,11 +1,11 @@
 //ajax call with jQuery
 $(document).ready(function () {
     
-    
-$.getJSON('data/contacts.json',function (data) {
+//start ajax call
+$.getJSON('data/contacts.json', function (data) {
     
     var addrBook = data.addressBook,
-        count = addrBook.lenth
+        count = addrBook.length
         
         $('#output').empty();
           
@@ -13,7 +13,7 @@ $.getJSON('data/contacts.json',function (data) {
                     
         $.each(addrBook, function (i, obj) {
         
-            $('#output').append('<p>' + obj.name + ', <a href="mailto:' + obj.email + ' ">' + obj.email +'</a><p>') .hide().fadeIn();  
+            $('#output').append('<p>' + obj.name + ', <a href="mailto:' + obj.email + ' ">' + obj.email +'</a><p>');  
             
             });
         }
