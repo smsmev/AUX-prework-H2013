@@ -18,7 +18,7 @@ $(document).ready(function () {
                         
             $.each(addrBook, function (i, obj) {
                 
-                var isItFound = obj.name.indexOf(queryResult);
+                var isItFound = obj.name.toLowerCase().indexOf(queryResult) != -1;
                 
                 if(isItFound !== -1) {
                     $('#output').append('<p>' + obj.name + ', <a href="mailto:' + obj.email + ' ">' + obj.email +'</a><p>');
