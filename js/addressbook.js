@@ -10,22 +10,24 @@ $(document).ready(function () {
             
         queryField.keyup( function(event) {
             
-            var queryResult = queryField.val();
-            
-            event.preventDefault();
+            var queryResult = queryField.val().toLowerCase();
             
             $('#output').empty();
-                        
-            $.each(addrBook, function (i, obj) {
+            event.preventDefault();
+            
+            if(count > 0 && queryResult !== "") {
                 
-                var isItFound = obj.name.toLowerCase().indexOf(queryResult) != -1;
+                $.each(addrBook, function (i, obj) {
                 
-                if(isItFound !== -1) {
-                    $('#output').append('<p>' + obj.name + ', <a href="mailto:' + obj.email + ' ">' + obj.email +'</a><p>');
-                }
+                    var isItFound = obj.name.toLowerCase().indexOf(queryResult); //!= -1;
                 
-            });
-        });
+                    if(isItFound !== -1) {
+                        $('#output').append('<p>' + obj.name + ', <a href="mailto:' + obj.email + ' ">' + obj.email +'</a><p>');
+                    }   
+                
+            })
+            }            
+        }); //
     
         }); //end ajax
     
